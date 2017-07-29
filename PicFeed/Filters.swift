@@ -10,4 +10,3 @@ import UIKit
 
 class Filter {
     var filters: [Filter]
-}
