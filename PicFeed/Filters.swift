@@ -8,7 +8,5 @@
 
 import UIKit
 
-class Filters {
-
-    let 
-}
+class Filter {
+    var filters: [Filter]
