@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,28 +22,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ijy-tV-h7Q">
-                                <rect key="frame" x="67" y="95" width="240" height="232"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ijy-tV-h7Q">
+                                <rect key="frame" x="46.5" y="46" width="281" height="333.5"/>
                                 <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="NYJ-GT-hat" appends="YES" id="rpj-KJ-acz"/>
                                 </connections>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vIP-zm-jD8">
-                                <rect key="frame" x="164" y="347" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4C-RT-BcO">
+                                <rect key="frame" x="187" y="387.5" width="140.5" height="36"/>
+                                <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="POST"/>
+                                <connections>
+                                    <action selector="postButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bEJ-gG-i7M"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Ijy-tV-h7Q" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="75" id="H00-nt-uRa"/>
-                            <constraint firstAttribute="trailing" secondItem="Ijy-tV-h7Q" secondAttribute="trailing" constant="68" id="fK3-gL-K1q"/>
-                            <constraint firstItem="Ijy-tV-h7Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="67" id="t8M-4f-BI3"/>
-                            <constraint firstItem="vIP-zm-jD8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="164" id="u8P-sj-Vbf"/>
-                            <constraint firstAttribute="trailing" secondItem="vIP-zm-jD8" secondAttribute="trailing" constant="165" id="x58-UF-Qql"/>
-                            <constraint firstItem="vIP-zm-jD8" firstAttribute="top" secondItem="Ijy-tV-h7Q" secondAttribute="bottom" constant="20" id="yPy-5I-wZA"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ijy-tV-h7Q" secondAttribute="bottom" constant="340" id="yTD-YR-YnA"/>
+                            <constraint firstItem="y4C-RT-BcO" firstAttribute="width" secondItem="Ijy-tV-h7Q" secondAttribute="width" multiplier="0.5" id="8Uh-OH-d1C"/>
+                            <constraint firstItem="Ijy-tV-h7Q" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="LDG-Ub-ziH"/>
+                            <constraint firstItem="y4C-RT-BcO" firstAttribute="trailing" secondItem="Ijy-tV-h7Q" secondAttribute="trailing" id="QQv-iG-RXO"/>
+                            <constraint firstItem="Ijy-tV-h7Q" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="YMY-6I-7kN"/>
+                            <constraint firstItem="Ijy-tV-h7Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gFi-Ab-5bI"/>
+                            <constraint firstItem="Ijy-tV-h7Q" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="26" id="td7-pS-aYE"/>
+                            <constraint firstItem="y4C-RT-BcO" firstAttribute="top" secondItem="Ijy-tV-h7Q" secondAttribute="bottom" constant="8" id="xfe-AK-ILx"/>
                         </constraints>
                     </view>
                     <connections>
