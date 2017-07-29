@@ -30,6 +30,9 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
             CloudKit.shared.save(post: newPost, completion: { (success) in
                 if success {
+                    OperationQueue.main.addOperation {
+                        self.selectedImageView.image = nil
+                    }
                     print("Successfully Saved to the Cloud!")
                 } else {
                     print("Unsuccessful in saving to CLoud...")
@@ -62,6 +65,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         self.imagePicker.delegate = self
         self.imagePicker.sourceType = sourceType
+        self.imagePicker.allowsEditing = true
         
         self.present(imagePicker, animated: true, completion: nil)
     }
