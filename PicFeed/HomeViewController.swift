@@ -40,7 +40,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     
     func presentAlertController() {
-        let alertController = UIAlertController(title: "Select Source", message: "Please select source for image", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "", message: "Select Source", preferredStyle: .actionSheet)
         let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (action) in
             self.presentImagePicker(sourceType: .photoLibrary)
         }
