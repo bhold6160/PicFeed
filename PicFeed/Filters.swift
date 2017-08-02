@@ -35,6 +35,7 @@ class Filters {
             guard let eAGLContext = EAGLContext(api: .openGLES2) else {
                 fatalError("Issue accessing the GPU")
             }
+            
             let context = CIContext(eaglContext: eAGLContext, options: options)
             
             //Get final image after being filtered

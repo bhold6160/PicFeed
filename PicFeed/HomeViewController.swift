@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         presentAlertController()
     }
     
+    //Post Button
     @IBAction func postButtonPressed(_ sender: Any) {
         
         if let newImage = self.selectedImageView.image {
@@ -41,9 +42,24 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    //Filter button
     @IBAction func filterButtonPressed(_ sender: Any) {
+        
+        let alertController = UIAlertController(title: "Filters", message: "Select Filter:", preferredStyle: .alert)
+        
+        let chromeAction = UIAlertAction(title: "Chrome", style: .default) { (action) in
+            if let imageViewImage = self.selectedImageView.image {
+                Filters.filter(image: imageViewImage, withFilter: .CIPhotoEffectChrome, completion: { (filteredImage) in
+                    self.selectedImageView.image = filteredImage
+                })
+            }
+        }
+        
+        alertController.addAction(chromeAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
+    //Source selection alert
     func presentAlertController() {
         let alertController = UIAlertController(title: "", message: "Select Source", preferredStyle: .actionSheet)
         let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (action) in
