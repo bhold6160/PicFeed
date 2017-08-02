@@ -41,6 +41,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    @IBAction func filterButtonPressed(_ sender: Any) {
+    }
     
     func presentAlertController() {
         let alertController = UIAlertController(title: "", message: "Select Source", preferredStyle: .actionSheet)
