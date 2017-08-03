@@ -14,8 +14,18 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet weak var selectedImageView: UIImageView!
     
+    @IBOutlet weak var leadingConstraintForFilterButton: NSLayoutConstraint!
+    @IBOutlet weak var trailingConstraintForPostButton: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.selectedImageView.image != nil {
+            animateInButtons()
+        }
     }
     
     @IBAction func userTappedImage(_ sender: Any) {
@@ -26,7 +36,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBAction func postButtonPressed(_ sender: Any) {
         
         if let newImage = self.selectedImageView.image {
-        
+            
             let newPost = Post(image: newImage)
             
             CloudKit.shared.save(post: newPost, completion: { (success) in
@@ -47,17 +57,38 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let alertController = UIAlertController(title: "Filters", message: "Select Filter:", preferredStyle: .alert)
         
-        let chromeAction = UIAlertAction(title: "Chrome", style: .default) { (action) in
+        func filterSelection() -> UIAlertAction {
             if let imageViewImage = self.selectedImageView.image {
-                Filters.filter(image: imageViewImage, withFilter: .CIPhotoEffectChrome, completion: { (filteredImage) in
+                Filters.filter(image: imageViewImage, withFilter: .CIPhotoEffectChrome, completion: { (filteredImage)  in
+      
+                Filters.filter(image: imageViewImage, withFilter: .CIPhotoEffectMono, completion: { (filteredImage)  in
+                    
+                Filters.filter(image: imageViewImage, withFilter: .CIPhotoEffectTransfer, completion: { (filteredImage)  in
                     self.selectedImageView.image = filteredImage
                 })
+            })
+        })
+    }
+            
+            for name in CIFilter.filterNames(inCategories: nil){
+                print(name)
             }
+            let filterReturn = UIAlertAction(title: "", style: .default)
+            
+            return filterReturn
         }
         
-        alertController.addAction(chromeAction)
+        //        let chromeAction = UIAlertAction(title: "Chrome", style: .default) { (action) in
+        //            if let imageViewImage = self.selectedImageView.image {
+        //                Filters.filter(image: imageViewImage, withFilter: .CIPhotoEffectChrome, completion: { (filteredImage) in
+        //                    self.selectedImageView.image = filteredImage
+        //                })
+        //            }
+        
+        alertController.addAction(filterSelection())
         self.present(alertController, animated: true, completion: nil)
     }
+    
     
     //Source selection alert
     func presentAlertController() {
@@ -78,7 +109,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         self.present(alertController, animated: true, completion: nil)
     }
-
+    
     func presentImagePicker(sourceType: UIImagePickerControllerSourceType) {
         
         self.imagePicker.delegate = self
@@ -99,6 +130,16 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
         
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func animateInButtons() {
+        self.leadingConstraintForFilterButton.constant = 0
+        self.trailingConstraintForPostButton.constant = 0
+        
+        UIView.animate(withDuration: 0.6) {
+            self.view.layoutIfNeeded()
+            self.selectedImageView.layer.cornerRadius = 15
+        }
     }
 }
 

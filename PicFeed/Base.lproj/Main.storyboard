@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="B9F-UW-c8h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Y3e-n7-d5b">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="PicFeed" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,7 +31,7 @@
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4C-RT-BcO">
-                                <rect key="frame" x="187" y="431.5" width="140.5" height="36"/>
+                                <rect key="frame" x="487" y="431.5" width="140.5" height="36"/>
                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="20"/>
                                 <state key="normal" title="Post">
@@ -42,7 +42,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugl-sc-Vd5">
-                                <rect key="frame" x="46" y="431.5" width="140.5" height="36"/>
+                                <rect key="frame" x="-253.5" y="431.5" width="140.5" height="36"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Filter">
@@ -58,19 +58,22 @@
                             <constraint firstItem="y4C-RT-BcO" firstAttribute="width" secondItem="Ijy-tV-h7Q" secondAttribute="width" multiplier="0.5" id="8Uh-OH-d1C"/>
                             <constraint firstItem="Ugl-sc-Vd5" firstAttribute="top" secondItem="Ijy-tV-h7Q" secondAttribute="bottom" constant="8" id="IUl-Kl-UOb"/>
                             <constraint firstItem="Ijy-tV-h7Q" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="LDG-Ub-ziH"/>
-                            <constraint firstItem="y4C-RT-BcO" firstAttribute="trailing" secondItem="Ijy-tV-h7Q" secondAttribute="trailing" id="QQv-iG-RXO"/>
+                            <constraint firstItem="y4C-RT-BcO" firstAttribute="trailing" secondItem="Ijy-tV-h7Q" secondAttribute="trailing" constant="300" id="QQv-iG-RXO"/>
                             <constraint firstItem="Ijy-tV-h7Q" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="YMY-6I-7kN"/>
                             <constraint firstItem="Ijy-tV-h7Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gFi-Ab-5bI"/>
-                            <constraint firstItem="Ugl-sc-Vd5" firstAttribute="leading" secondItem="Ijy-tV-h7Q" secondAttribute="leading" id="ghr-bX-a3G"/>
+                            <constraint firstItem="Ugl-sc-Vd5" firstAttribute="leading" secondItem="Ijy-tV-h7Q" secondAttribute="leading" constant="-300" id="ghr-bX-a3G"/>
                             <constraint firstItem="Ugl-sc-Vd5" firstAttribute="height" secondItem="y4C-RT-BcO" secondAttribute="height" id="phJ-tB-9dF"/>
                             <constraint firstItem="Ijy-tV-h7Q" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="26" id="td7-pS-aYE"/>
                             <constraint firstItem="y4C-RT-BcO" firstAttribute="top" secondItem="Ijy-tV-h7Q" secondAttribute="bottom" constant="8" id="xfe-AK-ILx"/>
                             <constraint firstItem="Ugl-sc-Vd5" firstAttribute="width" secondItem="Ijy-tV-h7Q" secondAttribute="width" multiplier="0.5" id="yFK-Xx-Wg6"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Hga-h3-IXT"/>
                     <navigationItem key="navigationItem" id="4OF-Vy-7jP"/>
                     <connections>
+                        <outlet property="leadingConstraintForFilterButton" destination="ghr-bX-a3G" id="NWp-LP-eTD"/>
                         <outlet property="selectedImageView" destination="Ijy-tV-h7Q" id="Zcn-vZ-3pU"/>
+                        <outlet property="trailingConstraintForPostButton" destination="QQv-iG-RXO" id="Anu-c9-BDQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -80,25 +83,24 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="972" y="57.121439280359823"/>
+            <point key="canvasLocation" x="2850.4000000000001" y="57.121439280359823"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="M19-Np-2yY">
+        <!--Tab Bar Controller-->
+        <scene sceneID="Tip-NP-w2n">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="B9F-UW-c8h" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Y3e-n7-d5b" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="79U-Pr-2Lv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="ke1-Zf-49l">
                         <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ksi-JP-0Gm"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Snm-Cv-fIQ"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9Le-lm-CNg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uhz-Ne-P6J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="57.121439280359823"/>
+            <point key="canvasLocation" x="1911.2" y="57.121439280359823"/>
         </scene>
     </scenes>
 </document>
