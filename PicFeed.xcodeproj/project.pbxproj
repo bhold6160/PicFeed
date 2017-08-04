@@ -18,6 +18,8 @@
 		F24FB3661F284DE300D26984 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24FB3651F284DE300D26984 /* HomeViewController.swift */; };
 		F286C9D21F2D117500D18506 /* gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F286C9D11F2D117500D18506 /* gitignore */; };
 		F286C9D61F2D23CE00D18506 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F286C9D51F2D23CE00D18506 /* Filters.swift */; };
+		F286C9DA1F34193000D18506 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F286C9D91F34193000D18506 /* GalleryViewController.swift */; };
+		F286C9DC1F341D0500D18506 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F286C9DB1F341D0500D18506 /* PostCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		F24FB3651F284DE300D26984 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F286C9D11F2D117500D18506 /* gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gitignore; sourceTree = "<group>"; };
 		F286C9D51F2D23CE00D18506 /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
+		F286C9D91F34193000D18506 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		F286C9DB1F341D0500D18506 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				F24FB3511F283F0A00D26984 /* Main.storyboard */,
+				F286C9DB1F341D0500D18506 /* PostCell.swift */,
 				F24FB3561F283F0A00D26984 /* LaunchScreen.storyboard */,
 			);
 			name = View;
@@ -121,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				F24FB3651F284DE300D26984 /* HomeViewController.swift */,
+				F286C9D91F34193000D18506 /* GalleryViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -208,11 +214,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F24FB3641F28473A00D26984 /* CouldKit.swift in Sources */,
+				F286C9DA1F34193000D18506 /* GalleryViewController.swift in Sources */,
 				F24FB34E1F283F0A00D26984 /* AppDelegate.swift in Sources */,
 				F24FB3661F284DE300D26984 /* HomeViewController.swift in Sources */,
 				F286C9D61F2D23CE00D18506 /* Filters.swift in Sources */,
 				F21168CA1F2AE94B0017E7A7 /* UIExtensions.swift in Sources */,
 				F21168C81F2AE84B0017E7A7 /* Post.swift in Sources */,
+				F286C9DC1F341D0500D18506 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
