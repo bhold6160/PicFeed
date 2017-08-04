@@ -23,6 +23,12 @@ class GalleryViewController: UIViewController,  UICollectionViewDataSource {
         super.viewDidLoad()
         
         self.collectionView.dataSource = self
+        
+        CloudKit.shared.getPosts { (posts) in
+            if let posts = posts {
+                self.allPosts = posts
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
