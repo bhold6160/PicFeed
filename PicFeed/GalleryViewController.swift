@@ -23,6 +23,10 @@ class GalleryViewController: UIViewController,  UICollectionViewDataSource {
         super.viewDidLoad()
         
         self.collectionView.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         CloudKit.shared.getPosts { (posts) in
             if let posts = posts {
