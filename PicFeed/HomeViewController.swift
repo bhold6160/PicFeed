@@ -57,36 +57,38 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let alertController = UIAlertController(title: "Filters", message: "Select Filter:", preferredStyle: .alert)
         
-        func filterSelection() -> UIAlertAction {
+        let chromeAction = alertActionForFilter(name: .CIPhotoEffectChrome, title: "Chrome")
+        let monoAction = alertActionForFilter(name: .CIPhotoEffectMono, title: "Black and White")
+        let vintageAction = alertActionForFilter(name: .CIPhotoEffectTransfer, title: "Vintage")
+        
+        alertController.addAction(chromeAction)
+        alertController.addAction(monoAction)
+        alertController.addAction(vintageAction)
+        
+        
+        //Same code but using for loop and dictionary
+//        let allFilters = ["Chrome" : FilterNames.CIPhotoEffectChrome,
+//                          "Black and White" : .CIPhotoEffectMono,
+//                          "Vintage" : .CIPhotoEffectTransfer]
+//        
+//        for (key, value) in allFilters {
+//            let alertAction = alertActionForFilter(name: value, title: key)
+//            alertController.addAction(alertAction)
+//        }
+//        
+        self.present(alertController, animated: true, completion:  nil)
+    }
+    
+    private func alertActionForFilter(name: FilterNames, title: String) -> UIAlertAction {
+        let alertAction = UIAlertAction(title: title, style: .default) { (action) in
             if let imageViewImage = self.selectedImageView.image {
-                Filters.filter(image: imageViewImage, withFilter: .CIPhotoEffectChrome, completion: { (filteredImage)  in
-      
-                Filters.filter(image: imageViewImage, withFilter: .CIPhotoEffectMono, completion: { (filteredImage)  in
-                    
-                Filters.filter(image: imageViewImage, withFilter: .CIPhotoEffectTransfer, completion: { (filteredImage)  in
+                Filters.filter(image: imageViewImage, withFilter: name, completion: { (filteredImage) in
                     self.selectedImageView.image = filteredImage
                 })
-            })
-        })
-    }
-            
-            for name in CIFilter.filterNames(inCategories: nil){
-                print(name)
             }
-            let filterReturn = UIAlertAction(title: "", style: .default)
-            
-            return filterReturn
         }
         
-        //        let chromeAction = UIAlertAction(title: "Chrome", style: .default) { (action) in
-        //            if let imageViewImage = self.selectedImageView.image {
-        //                Filters.filter(image: imageViewImage, withFilter: .CIPhotoEffectChrome, completion: { (filteredImage) in
-        //                    self.selectedImageView.image = filteredImage
-        //                })
-        //            }
-        
-        alertController.addAction(filterSelection())
-        self.present(alertController, animated: true, completion: nil)
+        return alertAction
     }
     
     
