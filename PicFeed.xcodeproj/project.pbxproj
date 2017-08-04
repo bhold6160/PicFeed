@@ -18,7 +18,6 @@
 		F24FB3661F284DE300D26984 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24FB3651F284DE300D26984 /* HomeViewController.swift */; };
 		F286C9D21F2D117500D18506 /* gitignore in Resources */ = {isa = PBXBuildFile; fileRef = F286C9D11F2D117500D18506 /* gitignore */; };
 		F286C9D61F2D23CE00D18506 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F286C9D51F2D23CE00D18506 /* Filters.swift */; };
-		F286C9D81F303A9A00D18506 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F286C9D71F303A9A00D18506 /* Image.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +35,6 @@
 		F24FB3651F284DE300D26984 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		F286C9D11F2D117500D18506 /* gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gitignore; sourceTree = "<group>"; };
 		F286C9D51F2D23CE00D18506 /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
-		F286C9D71F303A9A00D18506 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +113,6 @@
 				F21168C71F2AE84B0017E7A7 /* Post.swift */,
 				F21168C91F2AE94B0017E7A7 /* UIExtensions.swift */,
 				F286C9D51F2D23CE00D18506 /* Filters.swift */,
-				F286C9D71F303A9A00D18506 /* Image.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -210,7 +207,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F286C9D81F303A9A00D18506 /* Image.swift in Sources */,
 				F24FB3641F28473A00D26984 /* CouldKit.swift in Sources */,
 				F24FB34E1F283F0A00D26984 /* AppDelegate.swift in Sources */,
 				F24FB3661F284DE300D26984 /* HomeViewController.swift in Sources */,
