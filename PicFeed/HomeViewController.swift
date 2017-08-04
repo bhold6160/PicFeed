@@ -17,6 +17,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var leadingConstraintForFilterButton: NSLayoutConstraint!
     @IBOutlet weak var trailingConstraintForPostButton: NSLayoutConstraint!
     
+    let kAnimationDuration = 0.6
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -138,7 +140,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.leadingConstraintForFilterButton.constant = 0
         self.trailingConstraintForPostButton.constant = 0
         
-        UIView.animate(withDuration: 0.6) {
+        UIView.animate(withDuration: kAnimationDuration) {
             self.view.layoutIfNeeded()
             self.selectedImageView.layer.cornerRadius = 15
         }
