@@ -61,25 +61,34 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let alertController = UIAlertController(title: "Filters", message: "Select Filter:", preferredStyle: .alert)
         
-        let chromeAction = alertActionForFilter(name: .CIPhotoEffectChrome, title: "Chrome")
-        let monoAction = alertActionForFilter(name: .CIPhotoEffectMono, title: "Black and White")
-        let vintageAction = alertActionForFilter(name: .CIPhotoEffectTransfer, title: "Vintage")
-        
-        alertController.addAction(chromeAction)
-        alertController.addAction(monoAction)
-        alertController.addAction(vintageAction)
+//        let chromeAction = alertActionForFilter(name: .CIPhotoEffectChrome, title: "Chrome")
+//        let monoAction = alertActionForFilter(name: .CIPhotoEffectMono, title: "Black and White")
+//        let vintageAction = alertActionForFilter(name: .CIPhotoEffectTransfer, title: "Vintage")
+//        let invertAction = alertActionForFilter(name: .CIColorInvert, title: "Invert")
+//        let blurAction = alertActionForFilter(name: .CIBoxBlur, title: "Blur")
+//        let curveAction = alertActionForFilter(name: .CISRGBToneCurveToLinear, title: "Color Curve")
+//        
+//        alertController.addAction(chromeAction)
+//        alertController.addAction(monoAction)
+//        alertController.addAction(vintageAction)
+//        alertController.addAction(invertAction)
+//        alertController.addAction(blurAction)
+//        alertController.addAction(curveAction)
         
         
         //Same code but using for loop and dictionary
-//        let allFilters = ["Chrome" : FilterNames.CIPhotoEffectChrome,
-//                          "Black and White" : .CIPhotoEffectMono,
-//                          "Vintage" : .CIPhotoEffectTransfer]
-//        
-//        for (key, value) in allFilters {
-//            let alertAction = alertActionForFilter(name: value, title: key)
-//            alertController.addAction(alertAction)
-//        }
-//        
+        let allFilters = ["Chrome" : FilterNames.CIPhotoEffectChrome,
+                          "Black and White" : .CIPhotoEffectMono,
+                          "Vintage" : .CIPhotoEffectTransfer,
+                          "Invert" : .CIColorInvert,
+                          "Blur" : .CIBoxBlur,
+                          "Color Curve" : .CISRGBToneCurveToLinear]
+        
+        for (key, value) in allFilters {
+            let alertAction = alertActionForFilter(name: value, title: key)
+            alertController.addAction(alertAction)
+        }
+
         self.present(alertController, animated: true, completion:  nil)
     }
     
