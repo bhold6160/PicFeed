@@ -18,7 +18,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var trailingConstraintForPostButton: NSLayoutConstraint!
     
     let kPostAnimationDuration = 0.6
-    let kFilterAnimationDuration = 0.2
+    let kFilterAnimationDuration = 0.6
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,11 +56,24 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    @IBAction func resetButtonPressed(_ sender: Any) {
+        if Filters.undoImageFilters.count > 0 {
+            if self.selectedImageView.image == Filters.undoImageFilters.last {
+                Filters.undoImageFilters.removeLast()
+            }
+            self.selectedImageView.image = Filters.undoImageFilters.popLast()
+        } else {
+            self.selectedImageView.image = Filters.originalImage
+        }
+    }
+    
+    
     //Filter button
     @IBAction func filterButtonPressed(_ sender: Any) {
         
         let alertController = UIAlertController(title: "Filters", message: "Select Filter:", preferredStyle: .alert)
         
+        //Each option represented as it's own variable and alert action
 //        let chromeAction = alertActionForFilter(name: .CIPhotoEffectChrome, title: "Chrome")
 //        let monoAction = alertActionForFilter(name: .CIPhotoEffectMono, title: "Black and White")
 //        let vintageAction = alertActionForFilter(name: .CIPhotoEffectTransfer, title: "Vintage")
@@ -76,7 +89,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //        alertController.addAction(curveAction)
         
         
-        //Same code but using for loop and dictionary
+        //Same code but using a for loop and dictionary
         let allFilters = ["Chrome" : FilterNames.CIPhotoEffectChrome,
                           "Black and White" : .CIPhotoEffectMono,
                           "Vintage" : .CIPhotoEffectTransfer,
@@ -107,7 +120,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     //Source selection alert
     func presentAlertController() {
-        let alertController = UIAlertController(title: "", message: "Select Source", preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: "Select Source", message: nil, preferredStyle: .actionSheet)
         let photoLibraryAction = UIAlertAction(title: "Photo Library", style: .default) { (action) in
             self.presentImagePicker(sourceType: .photoLibrary)
         }
@@ -141,6 +154,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            print(image, "pic selected")
             self.selectedImageView.image = image
         }
         

@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Photos-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="PicFeed" customModuleProvider="target" sceneMemberID="viewController">
@@ -23,15 +23,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ijy-tV-h7Q">
-                                <rect key="frame" x="46.5" y="90" width="281" height="333.5"/>
-                                <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="47" y="46" width="281" height="334"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="NYJ-GT-hat" appends="YES" id="rpj-KJ-acz"/>
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4C-RT-BcO">
-                                <rect key="frame" x="487" y="431.5" width="140.5" height="36"/>
+                                <rect key="frame" x="487" y="388" width="141" height="36"/>
                                 <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name=".SFNSDisplay" family=".SF NS Display" pointSize="20"/>
                                 <state key="normal" title="Post">
@@ -42,7 +42,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ugl-sc-Vd5">
-                                <rect key="frame" x="-253.5" y="431.5" width="140.5" height="36"/>
+                                <rect key="frame" x="-253" y="388" width="141" height="36"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Filter">
@@ -52,23 +52,34 @@
                                     <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w3A-qQ-DqK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iET-ut-v2j">
+                                <rect key="frame" x="164" y="471" width="46" height="30"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WW6-oG-x6i"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="iET-ut-v2j" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="164" id="4p5-NU-hDG"/>
                             <constraint firstItem="y4C-RT-BcO" firstAttribute="width" secondItem="Ijy-tV-h7Q" secondAttribute="width" multiplier="0.5" id="8Uh-OH-d1C"/>
                             <constraint firstItem="Ugl-sc-Vd5" firstAttribute="top" secondItem="Ijy-tV-h7Q" secondAttribute="bottom" constant="8" id="IUl-Kl-UOb"/>
                             <constraint firstItem="Ijy-tV-h7Q" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="LDG-Ub-ziH"/>
+                            <constraint firstItem="iET-ut-v2j" firstAttribute="top" secondItem="Ijy-tV-h7Q" secondAttribute="bottom" constant="91" id="O1y-RO-CGA"/>
                             <constraint firstItem="y4C-RT-BcO" firstAttribute="trailing" secondItem="Ijy-tV-h7Q" secondAttribute="trailing" constant="300" id="QQv-iG-RXO"/>
+                            <constraint firstAttribute="trailing" secondItem="iET-ut-v2j" secondAttribute="trailing" constant="165" id="Xeh-uU-NAO"/>
                             <constraint firstItem="Ijy-tV-h7Q" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="YMY-6I-7kN"/>
                             <constraint firstItem="Ijy-tV-h7Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gFi-Ab-5bI"/>
                             <constraint firstItem="Ugl-sc-Vd5" firstAttribute="leading" secondItem="Ijy-tV-h7Q" secondAttribute="leading" constant="-300" id="ghr-bX-a3G"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iET-ut-v2j" secondAttribute="bottom" constant="117" id="kl8-hX-rxh"/>
                             <constraint firstItem="Ugl-sc-Vd5" firstAttribute="height" secondItem="y4C-RT-BcO" secondAttribute="height" id="phJ-tB-9dF"/>
                             <constraint firstItem="Ijy-tV-h7Q" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="26" id="td7-pS-aYE"/>
                             <constraint firstItem="y4C-RT-BcO" firstAttribute="top" secondItem="Ijy-tV-h7Q" secondAttribute="bottom" constant="8" id="xfe-AK-ILx"/>
                             <constraint firstItem="Ugl-sc-Vd5" firstAttribute="width" secondItem="Ijy-tV-h7Q" secondAttribute="width" multiplier="0.5" id="yFK-Xx-Wg6"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Hga-h3-IXT"/>
+                    <tabBarItem key="tabBarItem" title="Photos" id="Hga-h3-IXT"/>
                     <navigationItem key="navigationItem" id="4OF-Vy-7jP"/>
                     <connections>
                         <outlet property="leadingConstraintForFilterButton" destination="ghr-bX-a3G" id="NWp-LP-eTD"/>
@@ -83,7 +94,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2889" y="-297"/>
+            <point key="canvasLocation" x="2888.8000000000002" y="-297.30134932533736"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Tip-NP-w2n">
@@ -103,7 +114,7 @@
             </objects>
             <point key="canvasLocation" x="1911.2" y="57.121439280359823"/>
         </scene>
-        <!--Item-->
+        <!--Posts-->
         <scene sceneID="Ggx-we-HPs">
             <objects>
                 <viewController id="ecB-uj-rZ2" customClass="GalleryViewController" customModule="PicFeed" customModuleProvider="target" sceneMemberID="viewController">
@@ -158,7 +169,7 @@
                             <constraint firstItem="CqT-Yx-6nR" firstAttribute="top" secondItem="1GX-u7-ebG" secondAttribute="bottom" id="VSg-hO-X4B"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="L1e-8o-bej"/>
+                    <tabBarItem key="tabBarItem" title="Posts" id="L1e-8o-bej"/>
                     <connections>
                         <outlet property="collectionView" destination="1GX-u7-ebG" id="xXd-c1-S4f"/>
                     </connections>

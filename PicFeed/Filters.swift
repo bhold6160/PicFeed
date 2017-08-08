@@ -22,6 +22,8 @@ enum FilterNames: String {
 class Filters {
     static var originalImage = UIImage()
     
+    static var undoImageFilters = [UIImage]()
+    
     class func filter(image: UIImage, withFilter filterName: FilterNames, completion: @escaping FilterCompletion) {
     
         OperationQueue().addOperation {
