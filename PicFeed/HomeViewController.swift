@@ -80,7 +80,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 //        let invertAction = alertActionForFilter(name: .CIColorInvert, title: "Invert")
 //        let blurAction = alertActionForFilter(name: .CIBoxBlur, title: "Blur")
 //        let curveAction = alertActionForFilter(name: .CISRGBToneCurveToLinear, title: "Color Curve")
-//        
+//
 //        alertController.addAction(chromeAction)
 //        alertController.addAction(monoAction)
 //        alertController.addAction(vintageAction)
@@ -110,6 +110,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             if let imageViewImage = self.selectedImageView.image {
                 Filters.filter(image: imageViewImage, withFilter: name, completion: { (filteredImage) in
                     self.selectedImageView.image = filteredImage
+                    Filters.undoImageFilters.append(filteredImage!)
                 })
             }
         }
@@ -156,6 +157,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             print(image, "pic selected")
             self.selectedImageView.image = image
+            
         }
         
         self.dismiss(animated: true, completion: nil)
