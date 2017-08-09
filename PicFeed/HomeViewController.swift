@@ -50,18 +50,18 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     }
                     print("Successfully Saved to the Cloud!")
                 } else {
-                    print("Unsuccessful in saving to CLoud...")
+                    print("Unsuccessful in saving to Cloud...")
                 }
             })
         }
     }
     
     @IBAction func resetButtonPressed(_ sender: Any) {
-        if Filters.undoImageFilters.count > 0 {
+        if Filters.undoImageFilters.count > 1 {
             if self.selectedImageView.image == Filters.undoImageFilters.last {
                 Filters.undoImageFilters.removeLast()
             }
-            self.selectedImageView.image = Filters.undoImageFilters.popLast()
+            self.selectedImageView.image = Filters.undoImageFilters.last
         } else {
             self.selectedImageView.image = Filters.originalImage
         }
@@ -157,7 +157,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             print(image, "pic selected")
             self.selectedImageView.image = image
-            
+            Filters.originalImage = image
+            Filters.undoImageFilters.append(image)
         }
         
         self.dismiss(animated: true, completion: nil)

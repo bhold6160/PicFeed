@@ -20,6 +20,7 @@
 		F286C9D61F2D23CE00D18506 /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F286C9D51F2D23CE00D18506 /* Filters.swift */; };
 		F286C9DA1F34193000D18506 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F286C9D91F34193000D18506 /* GalleryViewController.swift */; };
 		F286C9DC1F341D0500D18506 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F286C9DB1F341D0500D18506 /* PostCell.swift */; };
+		F286C9DE1F3AB08500D18506 /* GalleryFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F286C9DD1F3AB08500D18506 /* GalleryFlowLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		F286C9D51F2D23CE00D18506 /* Filters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		F286C9D91F34193000D18506 /* GalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		F286C9DB1F341D0500D18506 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		F286C9DD1F3AB08500D18506 /* GalleryFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryFlowLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		F24FB35F1F283F7500D26984 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F286C9DD1F3AB08500D18506 /* GalleryFlowLayout.swift */,
 				F24FB3511F283F0A00D26984 /* Main.storyboard */,
 				F286C9DB1F341D0500D18506 /* PostCell.swift */,
 				F24FB3561F283F0A00D26984 /* LaunchScreen.storyboard */,
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F24FB3641F28473A00D26984 /* CouldKit.swift in Sources */,
+				F286C9DE1F3AB08500D18506 /* GalleryFlowLayout.swift in Sources */,
 				F286C9DA1F34193000D18506 /* GalleryViewController.swift in Sources */,
 				F24FB34E1F283F0A00D26984 /* AppDelegate.swift in Sources */,
 				F24FB3661F284DE300D26984 /* HomeViewController.swift in Sources */,
