@@ -8,11 +8,16 @@
 
 import UIKit
 
-class GalleryViewController: UIViewController,  UICollectionViewDataSource {
+protocol GalleryViewControllerDelegate: class {
+    func galleryController(didSelect image: UIImage)
+}
 
+class GalleryViewController: UIViewController,  UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    weak var delegate: GalleryViewControllerDelegate?
+    
     @IBOutlet weak var collectionView: UICollectionView!
    
-    
     var allPosts = [Post]() {
         didSet {
             collectionView.reloadData()
@@ -23,6 +28,8 @@ class GalleryViewController: UIViewController,  UICollectionViewDataSource {
         super.viewDidLoad()
         
         self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        self.collectionView.collectionViewLayout = GalleryFlowLayout(columns: 4)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -45,4 +52,17 @@ class GalleryViewController: UIViewController,  UICollectionViewDataSource {
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let delegate = self.delegate {
+            let selectedPost = self.allPosts[indexPath.row]
+            
+            delegate.galleryController(didSelect: selectedPost.image)
+        }
+    }
 }
+
+
+
+
+

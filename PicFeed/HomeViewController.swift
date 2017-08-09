@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GalleryViewControllerDelegate {
     
     let imagePicker = UIImagePickerController()
     
@@ -22,6 +22,14 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let tabBarController = self.tabBarController, let viewControllers = tabBarController.viewControllers {
+            for viewController in viewControllers {
+                if let galleryController = viewController as? GalleryViewController {
+                    galleryController .delegate = self
+                }
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -164,12 +172,17 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.dismiss(animated: true, completion: nil)
     }
     
+    func galleryController(didSelect image: UIImage) {
+        self.selectedImageView.image = image
+        self.tabBarController?.selectedIndex = 0
+    }
+    
     func animateInFilterButton() {
         self.leadingConstraintForFilterButton.constant = 0
         
         UIView.animate(withDuration: kFilterAnimationDuration) {
             self.view.layoutIfNeeded()
-            self.selectedImageView.layer.cornerRadius = 15
+            self.selectedImageView.layer.cornerRadius = 10
         }
     }
     
@@ -178,7 +191,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         UIView.animate(withDuration: kPostAnimationDuration) {
             self.view.layoutIfNeeded()
-            self.selectedImageView.layer.cornerRadius = 15
+            self.selectedImageView.layer.cornerRadius = 10
         }
     }
 }
