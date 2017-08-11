@@ -50,12 +50,22 @@ class GalleryViewController: UIViewController,  UICollectionViewDataSource, UICo
             print("User started pinch")
         case .changed:
             print("Pinch changed!")
+            
+            if sender.velocity > 0 && layout.columns == 1 {
+                self.collectionView.transform = CGAffineTransform(scaleX: sender.scale, y: sender.scale)
+            }
         case .ended:
             print("User completed pinch gesture")
             if sender.velocity > 0 {
                 layout.columns -= 1
             } else if sender.velocity < 0 {
                 layout.columns += 1
+            }
+            
+            if layout.columns == 1 {
+                UIView.animate(withDuration: 0.25, animations: { 
+                    self.collectionView.transform = CGAffineTransform.identity
+                })
             }
             
             if layout.columns <= 0 {
@@ -70,6 +80,18 @@ class GalleryViewController: UIViewController,  UICollectionViewDataSource, UICo
             print(sender.state)
         }
     }
+    
+//    @IBAction func userLongPressedImage(_ sender: UILongPressGestureRecognizer) {
+//        print(sender.view!)
+//        
+//        if let collectionView = sender.view as? UICollectionView, let indexCell = collectionView.indexPathsForSelectedItems {
+//           if let selectedIndex = indexCell.first {
+//                let image = self.allPosts[selectedIndex.row].image
+//                
+//                print(image)
+//            }
+//        }
+//    }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -20,11 +20,25 @@ enum FilterNames: String {
 }
 
 class Filters {
+    static let shared = Filters()
+    
     static var originalImage = UIImage()
+    
+    let context: CIContext
+    
+    init() {
+        let options = [kCIContextOutputColorSpace : NSNull()]
+        guard let eAGLContext = EAGLContext(api: .openGLES2) else {
+            fatalError("Issue accessing the GPU")
+        }
+        
+         self.context = CIContext(eaglContext: eAGLContext, options: options)
+        
+    }
     
     static var undoImageFilters = [UIImage]()
     
-    class func filter(image: UIImage, withFilter filterName: FilterNames, completion: @escaping FilterCompletion) {
+    func filter(image: UIImage, withFilter filterName: FilterNames, completion: @escaping FilterCompletion) {
     
         OperationQueue().addOperation {
             
@@ -36,16 +50,9 @@ class Filters {
             let coreImage = CIImage(image: image)
             filter.setValue(coreImage, forKey: kCIInputImageKey)
             
-            let options = [kCIContextOutputColorSpace : NSNull()]
-            guard let eAGLContext = EAGLContext(api: .openGLES2) else {
-                fatalError("Issue accessing the GPU")
-            }
-            
-            let context = CIContext(eaglContext: eAGLContext, options: options)
-            
             //Get final image after being filtered
             if let outputImage = filter.outputImage {
-                if let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
+                if let cgImage = self.context.createCGImage(outputImage, from: outputImage.extent) {
                     OperationQueue.main.addOperation {
                         completion(UIImage(cgImage: cgImage))
                     }

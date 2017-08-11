@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Social
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GalleryViewControllerDelegate {
     
@@ -82,19 +83,19 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let alertController = UIAlertController(title: "Filters", message: "Select Filter:", preferredStyle: .alert)
         
         //Each option represented as it's own variable and alert action
-//        let chromeAction = alertActionForFilter(name: .CIPhotoEffectChrome, title: "Chrome")
-//        let monoAction = alertActionForFilter(name: .CIPhotoEffectMono, title: "Black and White")
-//        let vintageAction = alertActionForFilter(name: .CIPhotoEffectTransfer, title: "Vintage")
-//        let invertAction = alertActionForFilter(name: .CIColorInvert, title: "Invert")
-//        let blurAction = alertActionForFilter(name: .CIBoxBlur, title: "Blur")
-//        let curveAction = alertActionForFilter(name: .CISRGBToneCurveToLinear, title: "Color Curve")
-//
-//        alertController.addAction(chromeAction)
-//        alertController.addAction(monoAction)
-//        alertController.addAction(vintageAction)
-//        alertController.addAction(invertAction)
-//        alertController.addAction(blurAction)
-//        alertController.addAction(curveAction)
+        //        let chromeAction = alertActionForFilter(name: .CIPhotoEffectChrome, title: "Chrome")
+        //        let monoAction = alertActionForFilter(name: .CIPhotoEffectMono, title: "Black and White")
+        //        let vintageAction = alertActionForFilter(name: .CIPhotoEffectTransfer, title: "Vintage")
+        //        let invertAction = alertActionForFilter(name: .CIColorInvert, title: "Invert")
+        //        let blurAction = alertActionForFilter(name: .CIBoxBlur, title: "Blur")
+        //        let curveAction = alertActionForFilter(name: .CISRGBToneCurveToLinear, title: "Color Curve")
+        //
+        //        alertController.addAction(chromeAction)
+        //        alertController.addAction(monoAction)
+        //        alertController.addAction(vintageAction)
+        //        alertController.addAction(invertAction)
+        //        alertController.addAction(blurAction)
+        //        alertController.addAction(curveAction)
         
         
         //Same code but using a for loop and dictionary
@@ -109,14 +110,28 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             let alertAction = alertActionForFilter(name: value, title: key)
             alertController.addAction(alertAction)
         }
-
+        
         self.present(alertController, animated: true, completion:  nil)
+    }
+    
+    
+    @IBAction func userLongPressed(_ sender: UILongPressGestureRecognizer) {
+        guard let image = self.selectedImageView.image else { return }
+        
+        if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter) {
+            
+            if let composedController = SLComposeViewController(forServiceType: SLServiceTypeTwitter) {
+                composedController.add(image)
+                
+                self.present(composedController, animated: true, completion: nil)
+            }
+        }
     }
     
     private func alertActionForFilter(name: FilterNames, title: String) -> UIAlertAction {
         let alertAction = UIAlertAction(title: title, style: .default) { (action) in
             if let imageViewImage = self.selectedImageView.image {
-                Filters.filter(image: imageViewImage, withFilter: name, completion: { (filteredImage) in
+                Filters.shared.filter(image: imageViewImage, withFilter: name, completion: { (filteredImage) in
                     self.selectedImageView.image = filteredImage
                     Filters.undoImageFilters.append(filteredImage!)
                 })
