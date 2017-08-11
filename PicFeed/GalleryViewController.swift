@@ -14,9 +14,9 @@ protocol GalleryViewControllerDelegate: class {
 
 class GalleryViewController: UIViewController,  UICollectionViewDataSource, UICollectionViewDelegate {
     
-    weak var delegate: GalleryViewControllerDelegate?
-    
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    weak var delegate: GalleryViewControllerDelegate?
    
     var allPosts = [Post]() {
         didSet {
@@ -41,6 +41,36 @@ class GalleryViewController: UIViewController,  UICollectionViewDataSource, UICo
             }
         }
     }
+    
+    @IBAction func userPinchedCollectionView(_ sender: UIPinchGestureRecognizer) {
+        guard let layout = collectionView.collectionViewLayout as? GalleryFlowLayout else { return }
+        
+        switch sender.state {
+        case .began:
+            print("User started pinch")
+        case .changed:
+            print("Pinch changed!")
+        case .ended:
+            print("User completed pinch gesture")
+            if sender.velocity > 0 {
+                layout.columns -= 1
+            } else if sender.velocity < 0 {
+                layout.columns += 1
+            }
+            
+            if layout.columns <= 0 {
+                return
+            }
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                let newLayout = GalleryFlowLayout(columns: layout.columns)
+                self.collectionView.setCollectionViewLayout(newLayout, animated: true)
+            })
+        default:
+            print(sender.state)
+        }
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return allPosts.count
