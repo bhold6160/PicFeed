@@ -26,6 +26,8 @@ class Filters {
     
     let context: CIContext
     
+    var createContext = false
+    
     init() {
         let options = [kCIContextOutputColorSpace : NSNull()]
         guard let eAGLContext = EAGLContext(api: .openGLES2) else {

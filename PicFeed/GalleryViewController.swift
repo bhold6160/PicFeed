@@ -72,7 +72,7 @@ class GalleryViewController: UIViewController,  UICollectionViewDataSource, UICo
                 return
             }
             
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 let newLayout = GalleryFlowLayout(columns: layout.columns)
                 self.collectionView.setCollectionViewLayout(newLayout, animated: true)
             })
@@ -113,7 +113,6 @@ class GalleryViewController: UIViewController,  UICollectionViewDataSource, UICo
         }
     }
 }
-
 
 
 

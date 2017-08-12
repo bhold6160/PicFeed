@@ -42,8 +42,21 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func userTappedImage(_ sender: Any) {
+        Filters.shared.createContext = true
         presentAlertController()
     }
+    
+//    @IBAction func userDoubleTappedImage(_ sender: Any) {
+//        if Filters.undoImageFilters.count > 1 {
+//            if self.selectedImageView.image == Filters.undoImageFilters.last {
+//                Filters.undoImageFilters.removeLast()
+//            }
+//            self.selectedImageView.image = Filters.undoImageFilters.last
+//        } else {
+//            self.selectedImageView.image = Filters.originalImage
+//        }
+//    }
+    
     
     //Post Button
     @IBAction func postButtonPressed(_ sender: Any) {

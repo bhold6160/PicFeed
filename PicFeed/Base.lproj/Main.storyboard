@@ -29,6 +29,7 @@
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="NYJ-GT-hat" appends="YES" id="rpj-KJ-acz"/>
                                     <outletCollection property="gestureRecognizers" destination="w2m-F5-whb" appends="YES" id="7eJ-iq-7cM"/>
+                                    <outletCollection property="gestureRecognizers" destination="pvd-Vv-Zw4" appends="YES" id="vbq-vf-MYe"/>
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4C-RT-BcO">
@@ -99,6 +100,11 @@
                         <action selector="userLongPressed:" destination="BYZ-38-t0r" id="Twf-ZC-TNM"/>
                     </connections>
                 </pongPressGestureRecognizer>
+                <tapGestureRecognizer delaysTouchesEnded="NO" numberOfTapsRequired="2" numberOfTouchesRequired="2" id="pvd-Vv-Zw4">
+                    <connections>
+                        <action selector="userDoubleTappedImage:" destination="BYZ-38-t0r" id="KUS-Y3-xsW"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2888.8000000000002" y="-297.30134932533736"/>
         </scene>
