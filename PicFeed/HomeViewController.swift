@@ -9,20 +9,37 @@
 import UIKit
 import Social
 
-class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, GalleryViewControllerDelegate {
+class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, GalleryViewControllerDelegate {
     
     let imagePicker = UIImagePickerController()
-    
+
     @IBOutlet weak var selectedImageView: UIImageView!
+    @IBOutlet weak var filterCollectionView: UICollectionView!
     
     @IBOutlet weak var leadingConstraintForFilterButton: NSLayoutConstraint!
     @IBOutlet weak var trailingConstraintForPostButton: NSLayoutConstraint!
     
+    var allPosts = [Post]() {
+        didSet {
+            filterCollectionView.reloadData()
+        }
+    }
+    
+    
     let kPostAnimationDuration = 0.6
     let kFilterAnimationDuration = 0.6
+    let allFilters = ["Chrome" : FilterNames.CIPhotoEffectChrome,
+                      "Black and White" : .CIPhotoEffectMono,
+                      "Vintage" : .CIPhotoEffectTransfer,
+                      "Invert" : .CIColorInvert,
+                      "Blur" : .CIBoxBlur,
+                      "Color Curve" : .CISRGBToneCurveToLinear]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.filterCollectionView.dataSource = self
+        self.filterCollectionView.delegate = self
         
         if let tabBarController = self.tabBarController, let viewControllers = tabBarController.viewControllers {
             for viewController in viewControllers {
@@ -38,6 +55,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if self.selectedImageView.image != nil {
             animateInFilterButton()
             animateInPostButton()
+            applyFilterCollectionView()
         }
     }
     
@@ -110,12 +128,12 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //        alertController.addAction(curveAction)
         
         //Same code but using a for loop and dictionary
-        let allFilters = ["Chrome" : FilterNames.CIPhotoEffectChrome,
-                          "Black and White" : .CIPhotoEffectMono,
-                          "Vintage" : .CIPhotoEffectTransfer,
-                          "Invert" : .CIColorInvert,
-                          "Blur" : .CIBoxBlur,
-                          "Color Curve" : .CISRGBToneCurveToLinear]
+//        let allFilters = ["Chrome" : FilterNames.CIPhotoEffectChrome,
+//                          "Black and White" : .CIPhotoEffectMono,
+//                          "Vintage" : .CIPhotoEffectTransfer,
+//                          "Invert" : .CIColorInvert,
+//                          "Blur" : .CIBoxBlur,
+//                          "Color Curve" : .CISRGBToneCurveToLinear]
         
         for (key, value) in allFilters {
             let alertAction = alertActionForFilter(name: value, title: key)
@@ -148,6 +166,68 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             }
         }
         return alertAction
+    }
+    
+    //Filter Collection view
+    func applyFilterCollectionView() {
+        
+//        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//            return allFilters.count
+//        }
+//        
+//        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "postCell", for: indexPath) as! PostCell
+//            cell.post = self.allPosts[indexPath.row]
+//            
+//            if let filteredImage = selectedImageView.image {
+//                filteredImage =
+//            }
+//            
+//            return cell
+//        }
+        
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            
+            let postCell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! PostCell
+            
+            guard let originalImage = Filters.originalImage else { return postCell }
+            
+            guard let resizedImage = originalImage.resize(size: CGSize(width: 50, height: 50)) else { return postCell }
+            
+            let filterName = allFilters.keys.map({ (filterName) -> FilterNames in
+                filterName
+            })[indexPath.row]
+            
+            //Assign filter to filterCell
+            
+            postCell.filter = filterName
+            
+            let filterIdentifier = allFilters.values.map({ (filterIdentifier) -> Any in
+                filterIdentifier
+            })[indexPath.row]
+            
+            postCell.filterIdentifier.text = filterIdentifier
+            
+            Filters.shared.filter(name: FilterNames, image: resizedImage) { (filteredImage) in
+                postCell.imageView.image = filteredImage
+            }
+            
+            return postCell
+        }
+        func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return allFilters.count
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let filterName = allFilters.keys.map({ (filterName) -> FilterNames in
+                filterName
+            })[indexPath.row]
+            
+            print("Filtering: ")
+            Filters.shared.filter(name: filterName, image: Filters.originalImage!, completion: { (filteredImage) in
+                self.imageView.image = filteredImage
+            })
+        }
     }
     
     //Source selection alert

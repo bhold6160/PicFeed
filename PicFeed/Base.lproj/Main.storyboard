@@ -29,7 +29,6 @@
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="NYJ-GT-hat" appends="YES" id="rpj-KJ-acz"/>
                                     <outletCollection property="gestureRecognizers" destination="w2m-F5-whb" appends="YES" id="7eJ-iq-7cM"/>
-                                    <outletCollection property="gestureRecognizers" destination="pvd-Vv-Zw4" appends="YES" id="vbq-vf-MYe"/>
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4C-RT-BcO">
@@ -54,9 +53,30 @@
                                     <action selector="filterButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="w3A-qQ-DqK"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="454-cl-ymG">
+                                <rect key="frame" x="0.0" y="482" width="375" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="djK-IS-L5V">
+                                    <size key="itemSize" width="77" height="98"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="42I-kN-Kw6">
+                                        <rect key="frame" x="0.0" y="15" width="77" height="98"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="77" height="98"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iET-ut-v2j">
-                                <rect key="frame" x="164" y="471" width="46" height="30"/>
-                                <state key="normal" title="Reset"/>
+                                <rect key="frame" x="141" y="422" width="92" height="29"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Undo Filter"/>
                                 <connections>
                                     <action selector="resetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WW6-oG-x6i"/>
                                 </connections>
@@ -64,19 +84,23 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="iET-ut-v2j" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="164" id="4p5-NU-hDG"/>
+                            <constraint firstItem="iET-ut-v2j" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="141" id="4p5-NU-hDG"/>
                             <constraint firstItem="y4C-RT-BcO" firstAttribute="width" secondItem="Ijy-tV-h7Q" secondAttribute="width" multiplier="0.5" id="8Uh-OH-d1C"/>
                             <constraint firstItem="Ugl-sc-Vd5" firstAttribute="top" secondItem="Ijy-tV-h7Q" secondAttribute="bottom" constant="8" id="IUl-Kl-UOb"/>
                             <constraint firstItem="Ijy-tV-h7Q" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="LDG-Ub-ziH"/>
-                            <constraint firstItem="iET-ut-v2j" firstAttribute="top" secondItem="Ijy-tV-h7Q" secondAttribute="bottom" constant="91" id="O1y-RO-CGA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="454-cl-ymG" secondAttribute="bottom" constant="8" id="MPD-Eh-Tud"/>
+                            <constraint firstItem="iET-ut-v2j" firstAttribute="top" secondItem="Ijy-tV-h7Q" secondAttribute="bottom" constant="42" id="O1y-RO-CGA"/>
                             <constraint firstItem="y4C-RT-BcO" firstAttribute="trailing" secondItem="Ijy-tV-h7Q" secondAttribute="trailing" constant="300" id="QQv-iG-RXO"/>
-                            <constraint firstAttribute="trailing" secondItem="iET-ut-v2j" secondAttribute="trailing" constant="165" id="Xeh-uU-NAO"/>
+                            <constraint firstAttribute="trailing" secondItem="iET-ut-v2j" secondAttribute="trailing" constant="142" id="Xeh-uU-NAO"/>
                             <constraint firstItem="Ijy-tV-h7Q" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="YMY-6I-7kN"/>
+                            <constraint firstItem="454-cl-ymG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eRE-tM-FL9"/>
                             <constraint firstItem="Ijy-tV-h7Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gFi-Ab-5bI"/>
                             <constraint firstItem="Ugl-sc-Vd5" firstAttribute="leading" secondItem="Ijy-tV-h7Q" secondAttribute="leading" constant="-300" id="ghr-bX-a3G"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iET-ut-v2j" secondAttribute="bottom" constant="117" id="kl8-hX-rxh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iET-ut-v2j" secondAttribute="bottom" constant="167" id="kl8-hX-rxh"/>
                             <constraint firstItem="Ugl-sc-Vd5" firstAttribute="height" secondItem="y4C-RT-BcO" secondAttribute="height" id="phJ-tB-9dF"/>
                             <constraint firstItem="Ijy-tV-h7Q" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="26" id="td7-pS-aYE"/>
+                            <constraint firstAttribute="trailing" secondItem="454-cl-ymG" secondAttribute="trailing" id="uGL-4p-mjh"/>
+                            <constraint firstItem="454-cl-ymG" firstAttribute="top" secondItem="iET-ut-v2j" secondAttribute="bottom" constant="31" id="uPB-5z-VGn"/>
                             <constraint firstItem="y4C-RT-BcO" firstAttribute="top" secondItem="Ijy-tV-h7Q" secondAttribute="bottom" constant="8" id="xfe-AK-ILx"/>
                             <constraint firstItem="Ugl-sc-Vd5" firstAttribute="width" secondItem="Ijy-tV-h7Q" secondAttribute="width" multiplier="0.5" id="yFK-Xx-Wg6"/>
                         </constraints>
@@ -84,6 +108,7 @@
                     <tabBarItem key="tabBarItem" title="Photos" id="Hga-h3-IXT"/>
                     <navigationItem key="navigationItem" id="4OF-Vy-7jP"/>
                     <connections>
+                        <outlet property="filterCollectionView" destination="454-cl-ymG" id="MEt-ze-ujZ"/>
                         <outlet property="leadingConstraintForFilterButton" destination="ghr-bX-a3G" id="NWp-LP-eTD"/>
                         <outlet property="selectedImageView" destination="Ijy-tV-h7Q" id="Zcn-vZ-3pU"/>
                         <outlet property="trailingConstraintForPostButton" destination="QQv-iG-RXO" id="Anu-c9-BDQ"/>
@@ -100,11 +125,6 @@
                         <action selector="userLongPressed:" destination="BYZ-38-t0r" id="Twf-ZC-TNM"/>
                     </connections>
                 </pongPressGestureRecognizer>
-                <tapGestureRecognizer delaysTouchesEnded="NO" numberOfTapsRequired="2" numberOfTouchesRequired="2" id="pvd-Vv-Zw4">
-                    <connections>
-                        <action selector="userDoubleTappedImage:" destination="BYZ-38-t0r" id="KUS-Y3-xsW"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2888.8000000000002" y="-297.30134932533736"/>
         </scene>
@@ -114,6 +134,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Y3e-n7-d5b" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ke1-Zf-49l">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
