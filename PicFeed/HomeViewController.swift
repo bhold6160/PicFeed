@@ -89,7 +89,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
-    
     //Filter button
     @IBAction func filterButtonPressed(_ sender: Any) {
         
@@ -110,7 +109,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         //        alertController.addAction(blurAction)
         //        alertController.addAction(curveAction)
         
-        
         //Same code but using a for loop and dictionary
         let allFilters = ["Chrome" : FilterNames.CIPhotoEffectChrome,
                           "Black and White" : .CIPhotoEffectMono,
@@ -126,7 +124,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         self.present(alertController, animated: true, completion:  nil)
     }
-    
     
     @IBAction func userLongPressed(_ sender: UILongPressGestureRecognizer) {
         guard let image = self.selectedImageView.image else { return }
@@ -150,10 +147,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                 })
             }
         }
-        
         return alertAction
     }
-    
     
     //Source selection alert
     func presentAlertController() {
