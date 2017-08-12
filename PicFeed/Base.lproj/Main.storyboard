@@ -28,6 +28,8 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="NYJ-GT-hat" appends="YES" id="rpj-KJ-acz"/>
+                                    <outletCollection property="gestureRecognizers" destination="w2m-F5-whb" appends="YES" id="7eJ-iq-7cM"/>
+                                    <outletCollection property="gestureRecognizers" destination="pvd-Vv-Zw4" appends="YES" id="vbq-vf-MYe"/>
                                 </connections>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4C-RT-BcO">
@@ -93,6 +95,16 @@
                         <action selector="userTappedImage:" destination="BYZ-38-t0r" id="Aze-u8-Zom"/>
                     </connections>
                 </tapGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="w2m-F5-whb">
+                    <connections>
+                        <action selector="userLongPressed:" destination="BYZ-38-t0r" id="Twf-ZC-TNM"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <tapGestureRecognizer delaysTouchesEnded="NO" numberOfTapsRequired="2" numberOfTouchesRequired="2" id="pvd-Vv-Zw4">
+                    <connections>
+                        <action selector="userDoubleTappedImage:" destination="BYZ-38-t0r" id="KUS-Y3-xsW"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2888.8000000000002" y="-297.30134932533736"/>
         </scene>
@@ -129,6 +141,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1GX-u7-ebG">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZW7-1f-ebe">
                                     <size key="itemSize" width="137" height="135"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -145,6 +158,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BUM-3d-kQ7">
                                                     <rect key="frame" x="0.0" y="0.0" width="137" height="135"/>
+                                                    <gestureRecognizers/>
                                                 </imageView>
                                             </subviews>
                                         </view>
@@ -159,6 +173,9 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="kRi-ZZ-cqR" appends="YES" id="vya-aj-DDy"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -175,6 +192,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f4T-7s-waG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pinchGestureRecognizer id="kRi-ZZ-cqR">
+                    <connections>
+                        <action selector="userPinchedCollectionView:" destination="ecB-uj-rZ2" id="iIg-Ek-ria"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2888.8000000000002" y="387.25637181409297"/>
         </scene>
