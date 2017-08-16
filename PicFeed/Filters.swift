@@ -28,7 +28,7 @@ class Filters {
     
     var createContext = false
     
-    init() {
+    private init() {
         let options = [kCIContextOutputColorSpace : NSNull()]
         guard let eAGLContext = EAGLContext(api: .openGLES2) else {
             fatalError("Issue accessing the GPU")
@@ -38,7 +38,15 @@ class Filters {
         
     }
     
+    static let allFilters = [FilterNames.CIPhotoEffectChrome,
+                      .CIPhotoEffectMono,
+                      .CIPhotoEffectTransfer,
+                      .CIColorInvert,
+                      .CIBoxBlur,
+                      .CISRGBToneCurveToLinear]
+    
     static var undoImageFilters = [UIImage]()
+    static var unfilteredImage: UIImage?
     
     func filter(image: UIImage, withFilter filterName: FilterNames, completion: @escaping FilterCompletion) {
     
